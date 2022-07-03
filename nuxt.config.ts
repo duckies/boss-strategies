@@ -1,8 +1,6 @@
 import { defineNuxtConfig } from 'nuxt';
 
 export default defineNuxtConfig({
-  ssr: false,
-  target: 'static',
   srcDir: 'src',
   css: ['@unocss/reset/tailwind.css', '~/assets/styles/main.scss'],
   modules: [

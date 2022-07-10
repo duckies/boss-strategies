@@ -2,10 +2,13 @@ lockfileVersion: 5.4
 
 specifiers:
   '@headlessui/vue': 1.6.6
+  '@iconify-json/mdi': ^1.1.26
+  '@iconify-json/twemoji': ^1.1.5
   '@nuxt/content': 2.0.1
   '@nuxtjs/color-mode': ^3.1.4
   '@popperjs/core': 2.11.5
   '@unocss/nuxt': 0.43.0
+  '@unocss/preset-icons': ^0.44.0
   '@unocss/transformer-directives': 0.43.2
   '@vueuse/nuxt': 8.7.5
   nuxt: 3.0.0-rc.4
@@ -14,10 +17,13 @@ specifiers:
 
 devDependencies:
   '@headlessui/vue': 1.6.6_vue@3.2.37
+  '@iconify-json/mdi': 1.1.26
+  '@iconify-json/twemoji': 1.1.5
   '@nuxt/content': 2.0.1_d3ujsefq6twjqtlcm2g6vrdxvy
   '@nuxtjs/color-mode': 3.1.4_d3ujsefq6twjqtlcm2g6vrdxvy
   '@popperjs/core': 2.11.5
   '@unocss/nuxt': 0.43.0_d3ujsefq6twjqtlcm2g6vrdxvy
+  '@unocss/preset-icons': 0.44.0
   '@unocss/transformer-directives': 0.43.2
   '@vueuse/nuxt': 8.7.5_ucitiholtzrmy3ustqfqgjqms4
   nuxt: 3.0.0-rc.4_4cy5ofdano5uz3fcp76azvc6ry
@@ -350,6 +356,18 @@ packages:
       vue: ^3.2.0
     dependencies:
       vue: 3.2.37
+    dev: true
+
+  /@iconify-json/mdi/1.1.26:
+    resolution: {integrity: sha512-eL0N9xFOoxTMxQpMm5o3Z9cCuO6fjcp/6PYFeNMhopERgWy6wGSVeO8yuiMUN1F7fDkdnX1A4LYipFzGP4eI1g==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
+  /@iconify-json/twemoji/1.1.5:
+    resolution: {integrity: sha512-1sTyrLUrMF7QhXS8a9XOd2ySgxgESQTRvhtN471QFdqIaXMi7oWB5UUFh0z984s/al4Iclet+O8BZfuhM9t7lg==}
+    dependencies:
+      '@iconify/types': 1.1.0
     dev: true
 
   /@iconify/types/1.1.0:
@@ -937,6 +955,10 @@ packages:
     resolution: {integrity: sha512-SR2gHIl/5APfkl9WWbpKjYxMUkBin67uw8NIXOz0u/J5jSnXnu2z15DGwgOxwLfTl/AlBTsM0/lIJqfbckyPnw==}
     dev: true
 
+  /@unocss/core/0.44.0:
+    resolution: {integrity: sha512-stuRYyY6GJW9kFzAv5MbAwxYDVMS5ycYTvgrRZrctyV3BHLERRQD1jyQfFNn1QHTxYceH4VpQDKjueHiUmqMHw==}
+    dev: true
+
   /@unocss/inspector/0.43.0:
     resolution: {integrity: sha512-Adj2AOU0YTiHzYjYLc986pLlJ4MUrTkFl8wdGDpCD0BgmazsAOBt662IpH/gmawGiz0YgBB6YpnWtW8TuBeK6g==}
     dependencies:
@@ -979,6 +1001,16 @@ packages:
     dependencies:
       '@iconify/utils': 1.0.33
       '@unocss/core': 0.43.0
+      ohmyfetch: 0.4.18
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@unocss/preset-icons/0.44.0:
+    resolution: {integrity: sha512-yvzzGGdGbvgot6+PdWxOgTwWWamoIgAUINUWaHi324b5VIlH9FTrCPp3CyWvPzgXRzUtEAZ6Vb/EpouOS4YPOw==}
+    dependencies:
+      '@iconify/utils': 1.0.33
+      '@unocss/core': 0.44.0
       ohmyfetch: 0.4.18
     transitivePeerDependencies:
       - supports-color

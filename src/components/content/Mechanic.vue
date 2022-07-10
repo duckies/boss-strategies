@@ -61,7 +61,7 @@ const {
     display: flex;
     margin-left: auto;
     align-items: center;
-    gap: 2rem;
+    @apply gap-1 md:gap-4;
   }
 
   &__aside {

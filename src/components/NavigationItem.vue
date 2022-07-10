@@ -39,7 +39,18 @@ const emit = defineEmits<{ (e: 'click', to: string): void }>();
   }
 
   &__icon {
-    --at-apply: flex rounded-md flex-shrink-0 items-center justify-center text-white sm:h-12 sm:w-12;
+    --at-apply: relative flex rounded-xl flex-shrink-0 items-center justify-center text-white sm:h-12 sm:w-12 z-11 overflow-hidden;
+
+    &::after {
+      --at-apply: rounded-xl;
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      border: 2px solid #000;
+    }
 
     img {
       --at-apply: h-12 w-12;

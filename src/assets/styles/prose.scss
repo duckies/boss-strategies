@@ -1,4 +1,9 @@
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--rbp-text-header);
   font-weight: 600;
   letter-spacing: -0.025em;
@@ -11,9 +16,9 @@ h1, h2, h3, h4, h5, h6 {
         border-bottom: 1px dashed var(--rbp-text-header);
       }
     }
-  
+
     &::before {
-      content: "";
+      content: '';
       height: calc(100% + 2px);
       left: 2px;
       position: absolute;
@@ -50,8 +55,19 @@ p {
 }
 
 li {
+  padding-left: 0.5rem;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+}
+
+ol {
+  list-style-type: decimal;
+  margin: 1.25em 0;
+  padding: 0 0 0 1.5rem;
+
+  ::marker {
+    color: var(--rbp-marker);
+  }
 }
 
 ul > li {
@@ -59,14 +75,14 @@ ul > li {
   padding-left: 1.75em;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     background-color: #d1d5db;
     border-radius: 50%;
-    width: .375em;
-    height: .375em;
-    top: .6875em;
-    left: .25em;
+    width: 0.375em;
+    height: 0.375em;
+    top: 0.6875em;
+    left: 0.25em;
   }
 }
 
@@ -80,4 +96,3 @@ figcaption {
   font-size: 0.875em;
   margin-top: 0.5em;
 }
-

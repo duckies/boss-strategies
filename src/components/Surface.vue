@@ -15,6 +15,6 @@ defineProps({
 
 <style scoped>
 .surface {
-  background-color: var(--rbp-surface);
+  @apply bg-surface-50 dark:bg-surface-500 shadow-md;
 }
 </style>

@@ -4,6 +4,7 @@ const visible = ref(false);
 const props = defineProps<{
   link: string;
   title: string;
+  subtitle?: string;
 }>();
 
 const { getTooltipByURL } = useWowhead();
@@ -16,10 +17,14 @@ const {
 </script>
 
 <template>
-  <Surface v-if="tooltip?.id" class="rounded-md mb-2">
+  <Surface v-if="tooltip?.id" class="mechanic rounded-md mb-2">
     <!-- Toggle Header -->
     <div row class="flex p-3 gap-4 items-center" @click="visible = !visible">
-      <a :href="`https://www.wowhead.com/spell=${tooltip.id}`" target="_blank">
+      <a
+        class="mechanic__image"
+        :href="`https://www.wowhead.com/spell=${tooltip.id}`"
+        target="_blank"
+      >
         <Image
           class="h-12 border-2 border-black"
           :alt="tooltip.name"
@@ -27,29 +32,62 @@ const {
         />
       </a>
 
-      <span class="font-bold text-size-6 cursor-pointer">
+      <span class="mechanic__title font-bold 5 cursor-pointer">
         {{ title }}
       </span>
 
-      <div class="ml-auto">
+      <div class="mechanic__right">
+        <Chip v-if="subtitle" class="mechanic__aside">
+          {{ subtitle }}
+        </Chip>
+
         <IconChevronDown
-          :class="[visible ? '-rotate-180' : 'rotate-0', 'h-8 w-8 transform']"
+          :class="[visible ? 'rotate-0' : '-rotate-90']"
+          class="h-8 w-8 transform transition-transform"
         />
       </div>
     </div>
 
     <!-- Toggled Body -->
-    <Transition
-      enter-active-class="transition duration-300 ease-out"
-      enter-from-class="transform -translate-x-3 opacity-0 h-0"
-      enter-to-class="transform translate-x-0 opacity-100 h-full"
-      leave-active-class="transition duration-300 ease-out"
-      leave-from-class="transform translate-x-0 opacity-100 h-full"
-      leave-to-class="transform -translate-x-3 opacity-0 h-0"
-    >
-      <div v-show="visible" class="px-4 pb-4">
-        <slot />
-      </div>
-    </Transition>
+    <div v-show="visible" class="px-4 pb-4">
+      <slot />
+    </div>
   </Surface>
 </template>
+
+<style lang="scss" scoped>
+.mechanic {
+  &__right {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__aside {
+    @apply shadow-md;
+  }
+}
+.mechanic__title {
+  color: var(--rbp-text-header);
+}
+
+.mechanic__image {
+  --at-apply: relative rounded-xl overflow-hidden;
+
+  > img {
+    margin: 1px;
+  }
+
+  &::after {
+    --at-apply: rounded-xl;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    border: 2px solid #000;
+  }
+}
+</style>

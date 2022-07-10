@@ -26,13 +26,13 @@ const {
         target="_blank"
       >
         <Image
-          class="h-12 border-2 border-black"
+          class="h-12"
           :alt="tooltip.name"
           :src="`https://wow.zamimg.com/images/wow/icons/large/${tooltip.icon}.jpg`"
         />
       </a>
 
-      <span class="mechanic__title font-bold 5 cursor-pointer">
+      <span class="mechanic__title font-bold">
         {{ title }}
       </span>
 
@@ -55,7 +55,7 @@ const {
   </Surface>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .mechanic {
   &__right {
     display: flex;
@@ -64,30 +64,15 @@ const {
     @apply gap-1 md:gap-4;
   }
 
+  &__image {
+    --at-apply: rounded-xl overflow-hidden shadow-md;
+  }
+
   &__aside {
     @apply shadow-md;
   }
 }
 .mechanic__title {
   color: var(--rbp-text-header);
-}
-
-.mechanic__image {
-  --at-apply: relative rounded-xl overflow-hidden;
-
-  > img {
-    margin: 1px;
-  }
-
-  &::after {
-    --at-apply: rounded-xl;
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    border: 2px solid #000;
-  }
 }
 </style>

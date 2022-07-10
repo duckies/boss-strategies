@@ -3,11 +3,15 @@ defineProps<{ to?: string }>();
 </script>
 
 <template>
-  <div class="min-h-10 p-2">
-    <Link v-if="to" :to="to">
-      <slot />
-    </Link>
+  <Link class="list-item" v-if="to" :to="to">
+    <slot />
+  </Link>
 
-    <slot v-else />
-  </div>
+  <slot class="list-item" v-else />
 </template>
+
+<style lang="scss" scoped>
+.list-item {
+  @apply px-2 font-medium;
+}
+</style>

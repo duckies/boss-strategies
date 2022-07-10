@@ -1,5 +1,43 @@
-@use 'variables';
+@use 'reset';
+@use 'wowhead';
 
-a {
-  color: var(--color-link);
+:root {
+  --rbp-bg: #fff;
+  --rbp-surface: #fff;
+  --rbp-border: rgb(244, 244, 245);
+  --rbp-text: #3f3f46;
+  --rbp-text-header: #18181b;
+  --rbp-link: #d157f9;
+}
+
+html.dark {
+  --rbp-bg: #0d0d0d;
+  --rbp-surface: #171717;
+  --rbp-border: rgb(24, 24, 27);
+  --rbp-text: #e4e4e7;
+  --rbp-text-header: #fafafa;
+}
+
+html {
+  background-color: var(--rbp-bg);
+  color: var(--rbp-text);
+  font-family: Inter, sans-serif;
+}
+
+:not(h1,h2,h3,h4) {
+  > a {
+    &:hover {
+      border-color: var(--rbp-link);
+    }
+
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    color: var(--rbp-link);
+    font-weight: 500;
+  }
+}
+
+main {
+  min-height: calc(100vh - calc(4rem + 4rem));
 }

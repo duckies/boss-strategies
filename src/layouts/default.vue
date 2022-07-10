@@ -1,11 +1,10 @@
 <template>
-  <div class="layout">
+  <div class="layout text-base">
+    <LoadingIndicator />
     <Header />
 
-    <main class="px-7 py-10">
-      <article class="m-auto max-w-[65ch]">
-        <slot />
-      </article>
-    </main>
+    <slot />
+
+    <Footer />
   </div>
 </template>

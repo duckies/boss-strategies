@@ -1,49 +1,93 @@
-export interface Tooltip {
+interface WowheadResponse {
+  name: string;
+  quality: number;
+  icon: string;
+}
+
+export type TooltipType = 'spell' | 'item';
+
+export interface TooltipBase {
   id: number;
   name: string;
   icon: string;
-  tooltip: string;
-  tooltip2: string;
-  buff: string;
-  quality: null;
-  spells: {};
-  buffspells: {};
-  completion_category: number;
+  type: TooltipType;
 }
 
-export function useWowhead() {
-  const cache = useState<Map<number | string, Tooltip>>(
-    'wowhead',
-    () => new Map()
-  );
+export interface ItemTooltip extends TooltipBase {
+  type: 'item';
+  quality: number;
+}
 
-  const getSpellByName = (name: string) => {
-    for (const [id, tooltip] of cache.value) {
-      if (tooltip.name === name) {
-        return { id, tooltip };
+export interface SpellTooltip extends TooltipBase {
+  type: 'spell';
+}
+
+export type Tooltip = ItemTooltip | SpellTooltip;
+export type TooltipFragment = Pick<Tooltip, 'id' | 'type'>;
+
+export function useWowhead() {
+  const cache = useState<Map<string, Tooltip>>('wowhead', () => new Map());
+  const logger = useLogger('Wowhead');
+
+  /**
+   * Attempts to parse out a wowhead item or spell id.
+   */
+  const parseURL = (url: string): TooltipFragment => {
+    const match = url.match(/wowhead\.com\/(spell|item)=(\d+)/);
+
+    if (match) {
+      const id = parseInt(match[2]);
+
+      if (!isNaN(id)) {
+        return { type: match[1] as TooltipType, id };
       }
     }
 
     return null;
   };
 
-  const getSpellById = async (id: number | string) => {
-    if (cache.value.has(id)) {
-      return cache.value.get(id);
+  const getTooltipCached = async (id: number, type: TooltipType) => {
+    const key = `${type}-${id}`;
+
+    if (cache.value.has(key)) {
+      return cache.value.get(key);
     }
 
-    const tooltip = await $fetch<Tooltip>(
-      `https://www.wowhead.com/tooltip/spell/${id}`
-    );
+    const tooltip = await getTooltip(id, type);
 
-    cache.value.set(id, tooltip);
+    cache.value.set(key, tooltip);
 
     return tooltip;
   };
 
-  const getCache = async (spells: number[]) => {
-    await Promise.all(spells.map((spell) => getSpellById(spell)));
+  const getTooltip = async (id: number, type: TooltipType) => {
+    const resp = await $fetch<WowheadResponse>(
+      `https://www.wowhead.com/tooltip/${type}/${id}`
+    );
+
+    const tooltip: Tooltip = {
+      id,
+      type,
+      quality: resp.quality,
+      name: resp.name,
+      icon: resp.icon,
+    };
+
+    return tooltip;
   };
 
-  return { getSpell: getSpellById, getSpellByName, getCache };
+  const getTooltipByURL = (url: string) => {
+    const fragment = parseURL(url);
+
+    if (!fragment) {
+      return null;
+    }
+
+    return getTooltipCached(fragment.id, fragment.type);
+  };
+
+  return {
+    parseURL,
+    getTooltipByURL,
+  };
 }

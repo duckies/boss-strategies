@@ -2,25 +2,33 @@
 const visible = ref(false);
 
 const props = defineProps<{
-  name: string;
+  link: string;
+  title: string;
 }>();
 
-const data = useWowhead().getSpellByName(props.name);
+const { getTooltipByURL } = useWowhead();
+
+const {
+  data: tooltip,
+  pending,
+  error,
+} = useAsyncData(`${props.link}-mechanic`, () => getTooltipByURL(props.link));
 </script>
 
 <template>
-  <div class="bg-dark-600 rounded-md mb-2">
+  <Surface v-if="tooltip?.id" class="rounded-md mb-2">
     <!-- Toggle Header -->
-    <div class="flex p-4 gap-4 items-center" @click="visible = !visible">
-      <a :href="`https://www.wowhead.com/spell=${data.id}`" target="_blank">
+    <div row class="flex p-3 gap-4 items-center" @click="visible = !visible">
+      <a :href="`https://www.wowhead.com/spell=${tooltip.id}`" target="_blank">
         <Image
           class="h-12 border-2 border-black"
-          :src="`https://wow.zamimg.com/images/wow/icons/large/${data.tooltip.icon}.jpg`"
+          :alt="tooltip.name"
+          :src="`https://wow.zamimg.com/images/wow/icons/large/${tooltip.icon}.jpg`"
         />
       </a>
 
       <span class="font-bold text-size-6 cursor-pointer">
-        {{ name }}
+        {{ title }}
       </span>
 
       <div class="ml-auto">
@@ -43,5 +51,5 @@ const data = useWowhead().getSpellByName(props.name);
         <slot />
       </div>
     </Transition>
-  </div>
+  </Surface>
 </template>

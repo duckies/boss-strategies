@@ -1,22 +1,24 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@headlessui/vue': 1.6.6
   '@nuxt/content': 2.0.1
   '@nuxtjs/color-mode': ^3.1.4
-  '@popperjs/core': ^2.11.5
-  '@unocss/nuxt': ^0.43.0
-  '@unocss/preset-typography': ^0.43.0
-  '@vueuse/nuxt': ^8.7.5
+  '@popperjs/core': 2.11.5
+  '@unocss/nuxt': 0.43.0
+  '@unocss/transformer-directives': 0.43.2
+  '@vueuse/nuxt': 8.7.5
   nuxt: 3.0.0-rc.4
   sass: 1.53.0
   typescript: 4.7.4
 
 devDependencies:
+  '@headlessui/vue': 1.6.6_vue@3.2.37
   '@nuxt/content': 2.0.1_d3ujsefq6twjqtlcm2g6vrdxvy
   '@nuxtjs/color-mode': 3.1.4_d3ujsefq6twjqtlcm2g6vrdxvy
   '@popperjs/core': 2.11.5
   '@unocss/nuxt': 0.43.0_d3ujsefq6twjqtlcm2g6vrdxvy
-  '@unocss/preset-typography': 0.43.0
+  '@unocss/transformer-directives': 0.43.2
   '@vueuse/nuxt': 8.7.5_ucitiholtzrmy3ustqfqgjqms4
   nuxt: 3.0.0-rc.4_4cy5ofdano5uz3fcp76azvc6ry
   sass: 1.53.0
@@ -339,6 +341,15 @@ packages:
     resolution: {integrity: sha512-MVbXLbTcAotOPUj0pAMhVtJ+3/kFkwJqc5qNOleOZTv6QkZZABDMS21dSrSlVswEHwrpWC03e4fWytjqKvuE2A==}
     dependencies:
       mime: 3.0.0
+    dev: true
+
+  /@headlessui/vue/1.6.6_vue@3.2.37:
+    resolution: {integrity: sha512-WyTqb9V0lVUrObdcmSks+21wOy+JsJw8tAiw7Yy5qInOgKVfIVa7EwldtURkA5cgo9ycZRrzcWluFEeabvI0MQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      vue: 3.2.37
     dev: true
 
   /@iconify/types/1.1.0:
@@ -922,6 +933,10 @@ packages:
     resolution: {integrity: sha512-TQ3ZmZjlxSeoej2B8lcmub8Ct/iVfDX3BgWL+1IpNlayMpV6BS52HY+WIyZkv+eTleokCNNtgj1AbQjdT4N7sw==}
     dev: true
 
+  /@unocss/core/0.43.2:
+    resolution: {integrity: sha512-SR2gHIl/5APfkl9WWbpKjYxMUkBin67uw8NIXOz0u/J5jSnXnu2z15DGwgOxwLfTl/AlBTsM0/lIJqfbckyPnw==}
+    dev: true
+
   /@unocss/inspector/0.43.0:
     resolution: {integrity: sha512-Adj2AOU0YTiHzYjYLc986pLlJ4MUrTkFl8wdGDpCD0BgmazsAOBt662IpH/gmawGiz0YgBB6YpnWtW8TuBeK6g==}
     dependencies:
@@ -1027,6 +1042,13 @@ packages:
     resolution: {integrity: sha512-n4ucyFUQuIToY5akCIvnYTpAeSSKpHm0Y9Yascn/22Nm7erGaG09pKmrFTj3jple4Y1ZXd3RwJX1ai0yYMs0zg==}
     dependencies:
       '@unocss/core': 0.43.0
+      css-tree: 2.1.0
+    dev: true
+
+  /@unocss/transformer-directives/0.43.2:
+    resolution: {integrity: sha512-gOf+P4evr6c1+oxNy1QTMT62ahpGK5x2mnay9dHOo5euuuCLvMceAokjDrZ/sthZKkAorRoJ/i7jqJKKKvMRpA==}
+    dependencies:
+      '@unocss/core': 0.43.2
       css-tree: 2.1.0
     dev: true
 

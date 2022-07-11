@@ -69,7 +69,4 @@ export default defineNuxtConfig({
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
     ],
   },
-  experimental: {
-    reactivityTransform: true,
-  },
 });

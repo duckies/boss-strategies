@@ -4,11 +4,11 @@ import IconSun from '~/components/icon/Sun.vue';
 
 const theme = useColorMode();
 
-const isDark = $computed(() => theme.preference === 'dark');
-const icon = computed(() => (isDark ? IconSun : IconMoon));
+const isDark = computed(() => theme.preference === 'dark');
+const icon = computed(() => (isDark.value ? IconSun : IconMoon));
 
 function toggle() {
-  theme.preference = isDark ? 'light' : 'dark';
+  theme.preference = isDark.value ? 'light' : 'dark';
 }
 </script>
 

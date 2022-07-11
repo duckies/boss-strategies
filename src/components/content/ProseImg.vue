@@ -1,7 +1,7 @@
 <template>
   <img
     :src="src"
-    class="w-full h-full rounded-lg"
+    class="w-auto m-auto h-full rounded-lg"
     :alt="alt"
     :width="width"
     :height="height"

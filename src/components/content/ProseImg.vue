@@ -1,7 +1,7 @@
 <template>
   <img
     :src="src"
-    class="w-auto m-auto h-full rounded-lg"
+    class="rounded-lg"
     :alt="alt"
     :width="width"
     :height="height"
@@ -28,3 +28,11 @@ defineProps({
   },
 });
 </script>
+
+<style lang="scss">
+img {
+  height: auto;
+  max-width: 100%;
+  margin: 0 auto;
+}
+</style>

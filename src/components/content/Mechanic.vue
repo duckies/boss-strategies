@@ -13,7 +13,9 @@ const {
   data: tooltip,
   pending,
   error,
-} = useAsyncData(`${props.link}-mechanic`, () => getTooltipByURL(props.link));
+} = useAsyncData(`${props.link}-${props.title}-mechanic`, () =>
+  getTooltipByURL(props.link)
+);
 </script>
 
 <template>

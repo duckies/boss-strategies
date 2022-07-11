@@ -12,17 +12,20 @@ const props = defineProps({
 
 const { getTooltipByURL } = useWowhead();
 
-const { data: tooltip } = useAsyncData<any>(props.href, () =>
-  getTooltipByURL(props.href)
+const { data: tooltip } = useAsyncData<any>(
+  `${props.href}-${Math.floor(Math.random() * 100)}`,
+  () => getTooltipByURL(props.href)
 );
 </script>
 
 <template>
-  <WowheadTooltip v-if="tooltip" :tooltip="tooltip">
-    <slot />
-  </WowheadTooltip>
-
-  <NuxtLink v-else class="test" :href="href">
-    <slot />
+  <NuxtLink :href="href">
+    <!-- TODO: Figure out hydration issue with `useAsyncData` not running on server here. -->
+    <ClientOnly>
+      <WowheadIcon v-if="tooltip" :alt="tooltip.name" :icon="tooltip.icon" />
+    </ClientOnly>
+    <span>
+      <slot />
+    </span>
   </NuxtLink>
 </template>

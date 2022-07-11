@@ -18,6 +18,9 @@ export default defineNuxtConfig({
     classPrefix: '',
     classSuffix: '',
   },
+  components: {
+    dirs: [{ path: '~/components/warcraft', prefix: null }, '~/components'],
+  },
   content: {
     navigation: {
       fields: ['navigation'],
@@ -50,6 +53,10 @@ export default defineNuxtConfig({
   },
   meta: {
     script: [
+      // {
+      //   innerHTML:
+      //     'const whTooltips = {colorLinks: false, iconizeLinks: false, renameLinks: false};',
+      // },
       {
         src: 'https://wow.zamimg.com/widgets/power.js',
       },

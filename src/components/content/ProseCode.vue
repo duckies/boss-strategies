@@ -31,6 +31,7 @@ pre {
   flex: 1 1 0%;
   line-height: 1.625;
   padding: 1rem;
+  overflow-x: auto;
 }
 
 pre code .line {

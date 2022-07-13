@@ -1,6 +1,6 @@
 <template>
   <div class="layout text-base">
-    <LoadingIndicator />
+    <NuxtLoadingIndicator />
     <Header />
 
     <slot />

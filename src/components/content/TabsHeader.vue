@@ -57,8 +57,9 @@ watch(
         v-for="({ label }, i) in tabs"
         ref="tabsRef"
         :key="`${i}${label}`"
-        class="tab"
+        class="tabs-header--tab"
         :class="[activeTabIndex === i && 'active']"
+        type="button"
         @click="setTabIndex(i)"
       >
         {{ label }}
@@ -77,26 +78,26 @@ watch(
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .tabs-header {
-  @apply relative bg-gray-800 text-white;
-}
+  --at-apply: relative bg-gray-800;
 
-.tab {
-  @apply xs:py-2 xs:my-0 relative my-2 rounded-lg px-3 py-1.5 font-mono text-sm tracking-tight focus:outline-none;
+  &--tab {
+    --at-apply: "xs:py-2" "xs:my-0" text-white text-opacity-70 relative my-2 rounded-lg px-3 py-1.5 font-mono text-sm tracking-tight focus:outline-none;
 
-  &.active {
-    @apply text-white;
+    &.active {
+      --at-apply: text-white;
+    }
   }
 }
 
 .tab-slider-wrapper {
   transition: left 150ms, top 150ms, width 150ms, height 150ms, transform 100ms,
     opacity 100ms;
-  @apply xs:py-1.5 absolute -z-1;
+  --at-apply: "xs:py-1.5" absolute -z-1;
 }
 
 .tab-slider {
-  @apply flex h-full w-full rounded-lg bg-gray-700 dark:bg-gray-900;
+  --at-apply: flex h-full w-full rounded-lg bg-gray-700 "dark:bg-gray-900";
 }
 </style>

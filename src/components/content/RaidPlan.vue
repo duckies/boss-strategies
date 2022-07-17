@@ -64,23 +64,24 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .raid-plan {
-  @apply overflow-hidden rounded-lg h-full;
+  --at-apply: overflow-hidden rounded-lg h-full;
 
-  .tabs-header {
-    @apply bg-surface-500;
+  :deep(.tabs-header) {
+    --at-apply: bg-surface-500;
 
     .tab-slider {
-      @apply bg-primary bg-opacity-80;
+      --at-apply: bg-primary bg-opacity-80;
     }
   }
 
   &--content {
-    @apply overflow-hidden px-2 md:px-4 rounded-bl-lg rounded-br-lg bg-surface-600;
+    --at-apply: overflow-hidden px-2 'md:px-4' rounded-bl-lg rounded-br-lg
+      bg-surface-600;
 
     & > * {
-      @apply my-0;
+      --at-apply: my-0;
     }
   }
 }

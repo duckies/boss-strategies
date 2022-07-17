@@ -1,6 +1,7 @@
 import presetIcons from '@unocss/preset-icons';
 import presetWind from '@unocss/preset-wind';
 import transformerDirective from '@unocss/transformer-directives';
+import transformerVariantGroup from '@unocss/transformer-variant-group';
 import { defineNuxtConfig } from 'nuxt';
 
 export default defineNuxtConfig({
@@ -28,7 +29,7 @@ export default defineNuxtConfig({
   },
   unocss: {
     presets: [presetWind(), presetIcons()],
-    transformers: [transformerDirective()],
+    transformers: [transformerDirective(), transformerVariantGroup()],
     theme: {
       fontFamily: {
         sans: '"DM Sans", sans-serif',
@@ -50,6 +51,9 @@ export default defineNuxtConfig({
         },
       },
     },
+  },
+  build: {
+    transpile: ['@headlessui/vue'],
   },
   meta: {
     script: [

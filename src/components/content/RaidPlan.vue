@@ -66,21 +66,21 @@ export default defineComponent({
 
 <style lang="scss">
 .raid-plan {
-  --at-apply: overflow-hidden rounded-lg h-full;
+  @apply overflow-hidden rounded-lg h-full;
 
   .tabs-header {
-    --at-apply: bg-surface-500;
+    @apply bg-surface-500;
 
     .tab-slider {
-      --at-apply: bg-primary bg-opacity-80;
+      @apply bg-primary bg-opacity-80;
     }
   }
 
   &--content {
-    --at-apply: overflow-hidden px-2 md:px-4 rounded-bl-lg rounded-br-lg bg-surface-600;
+    @apply overflow-hidden px-2 md:px-4 rounded-bl-lg rounded-br-lg bg-surface-600;
 
     & > * {
-      --at-apply: my-0;
+      @apply my-0;
     }
   }
 }

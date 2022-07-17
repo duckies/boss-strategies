@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { PopoverButton } from '@headlessui/vue';
+
 export interface NavigationMeta {
   title?: string;
   description?: string;

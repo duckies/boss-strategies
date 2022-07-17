@@ -65,7 +65,7 @@ watch(
       </button>
       <span
         ref="tabSlider"
-        class="tab-slider-wrapper xs:py-1.5 absolute -z-[1]"
+        class="tab-slider-wrapper"
         :style="{
           transform: 'scale(0)',
           opacity: 0,
@@ -77,7 +77,7 @@ watch(
   </div>
 </template>
 
-<style scoped lang="postcss">
+<style lang="scss">
 .tabs-header {
   @apply relative bg-gray-800 text-white;
 }
@@ -93,7 +93,7 @@ watch(
 .tab-slider-wrapper {
   transition: left 150ms, top 150ms, width 150ms, height 150ms, transform 100ms,
     opacity 100ms;
-  @apply xs:py-1.5 -z-1;
+  @apply xs:py-1.5 absolute -z-1;
 }
 
 .tab-slider {

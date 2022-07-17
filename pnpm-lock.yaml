@@ -10,7 +10,7 @@ specifiers:
   '@unocss/nuxt': 0.44.3
   '@unocss/preset-icons': 0.44.3
   '@unocss/transformer-directives': 0.44.3
-  '@unocss/transformer-variant-group': ^0.44.3
+  '@unocss/transformer-variant-group': 0.44.3
   '@vueuse/nuxt': 8.9.4
   nuxt: 'npm:nuxt3@3.0.0-rc.5-27634566.ffd40d1 '
   sass: 1.53.0

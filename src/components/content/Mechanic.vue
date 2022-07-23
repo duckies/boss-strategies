@@ -5,11 +5,18 @@ const props = defineProps<{
   link: string;
   title: string;
   subtitle?: string;
+  unique: string;
 }>();
 
 const { getTooltipByURL } = useWowhead();
 
-const { data: tooltip } = useAsyncData(() => getTooltipByURL(props.link));
+const {
+  data: tooltip,
+  pending,
+  error,
+} = useAsyncData(`${props.link}-${props.title}-mechanic-${unique}`, () =>
+  getTooltipByURL(props.link)
+);
 </script>
 
 <template>

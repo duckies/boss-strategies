@@ -14,7 +14,7 @@ const {
   data: tooltip,
   pending,
   error,
-} = useAsyncData(`${props.link}-${props.title}-mechanic-${unique}`, () =>
+} = useAsyncData(`${props.link}-${props.title}-mechanic-${props.unique}`, () =>
   getTooltipByURL(props.link)
 );
 </script>

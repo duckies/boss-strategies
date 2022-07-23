@@ -9,13 +9,7 @@ const props = defineProps<{
 
 const { getTooltipByURL } = useWowhead();
 
-const {
-  data: tooltip,
-  pending,
-  error,
-} = useAsyncData(`${props.link}-${props.title}-mechanic`, () =>
-  getTooltipByURL(props.link)
-);
+const { data: tooltip } = useAsyncData(() => getTooltipByURL(props.link));
 </script>
 
 <template>
